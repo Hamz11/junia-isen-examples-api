@@ -74,3 +74,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
 #TEST POUR VOIR SI LE COMMIT EST SIGNE
+#Test pour voir si le commit est vérifié
