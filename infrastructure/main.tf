@@ -13,7 +13,7 @@ module "resource_group" {
   location            = var.location                # Région où le groupe de ressources sera créé
 }
 
-# Appel du module
+# Appel du module vnet
 
 module "vnet" {
   source              = "./modules/vnet"
@@ -25,3 +25,12 @@ module "vnet" {
   database_subnet_prefix    = var.database_subnet_prefix
   blob_storage_subnet_prefix = var.blob_storage_subnet_prefix
 }
+
+# A décommenter pour ajouter le blob storage au subnet 
+
+ module "blob_storage" {
+   source                 = "./modules/blob_storage"
+   resource_group_name    = var.resource_group_name
+   location               = var.location
+   vnet_subnet_id         = module.vnet.blob_storage_subnet_id  # Utilisation de la sortie pour le subnet Blob Storage
+ }

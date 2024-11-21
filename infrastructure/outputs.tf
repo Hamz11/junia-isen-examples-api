@@ -27,3 +27,17 @@ output "blob_storage_subnet_id" {
   description = "The ID of the Blob Storage Subnet"
   value       = module.vnet.blob_storage_subnet_id
 }
+
+
+
+output "blob_storage_account_name" {
+  value = module.blob_storage.storage_account_name
+}
+
+output "blob_container_name" {
+  value = module.blob_storage.blob_container_name
+}
+
+output "blob_name" {
+  value = module.blob_storage.blob_name
+}
