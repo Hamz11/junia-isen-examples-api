@@ -5,6 +5,13 @@ provider "azurerm" {
   subscription_id = var.subscription_id
 }
 
+resource "random_string" "app_server" {
+  length  = 10
+  special = false
+  upper   = false
+  lower   = true
+  numeric = true
+}
 
 # Appel du module resource_group
 module "resource_group" {
@@ -46,4 +53,16 @@ module "database" {
   vnet_id             = module.vnet.vnet_id
   administrator_login = var.administrator_login
   administrator_login_password = var.administrator_login_password
+}
+
+# Appel du module app service
+module "app_service" {
+  source              = "./modules/app_service"
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  app_service_plan_name = "app_serv_plan-${random_string.app_server.result}"
+  app_service_name    = "app_serv-${random_string.app_server.result}"
+  application_insights_key = null
+  postgresql_connection_string = null
+  connection_string = var.postgresql_connection_string
 }

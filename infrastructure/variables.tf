@@ -76,3 +76,19 @@ variable "administrator_login_password" {
   type        = string
 }
 
+#Variable App service
+
+variable "app_service_plan_name" {
+  description = "The name of the App Service Plan"
+  type        = string
+}
+
+variable "app_service_name" {
+  description = "The name of the App Service"
+  type        = string
+}
+
+variable "postgresql_connection_string" {
+  description = "Chaîne de connexion à la base de données PostgreSQL"
+  type        = string
+}

@@ -41,3 +41,10 @@ output "blob_container_name" {
 output "blob_name" {
   value = module.blob_storage.blob_name
 }
+
+#Output App service
+
+output "app_service_default_hostname" {
+  value       = module.app_service.app_service_default_hostname
+  description = "The default hostname of the App Service"
+}
