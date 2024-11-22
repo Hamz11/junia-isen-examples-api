@@ -52,3 +52,27 @@ variable "blob_storage_subnet_prefix" {
   default     = "10.0.3.0/24"
 
 }
+
+
+
+variable "postgresql_sku_name" {
+  description = "The SKU name for the PostgreSQL database"
+  type        = string
+  default     = "B_Gen5_1"
+}
+
+variable "postgresql_storage_tier" {
+  description = "The storage tier for PostgreSQL"
+  type        = string
+  default     = "Standard"
+}
+variable "administrator_login" {
+  description = "log de l'administrateur"
+  type        = string
+}
+
+variable "administrator_login_password" {
+  description = "Mot de passe de l'administrateur"
+  type        = string
+}
+
