@@ -29,3 +29,13 @@ variable "vnet_id" {
   description = "ID du réseau virtuel auquel lier la zone DNS privée"
   type        = string
 }
+
+variable "administrator_login" {
+  description = "log de l'administrateur"
+  type        = string
+}
+
+variable "administrator_login_password" {
+  description = "Mot de passe de l'administrateur"
+  type        = string
+}

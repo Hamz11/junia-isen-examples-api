@@ -66,3 +66,13 @@ variable "postgresql_storage_tier" {
   type        = string
   default     = "Standard"
 }
+variable "administrator_login" {
+  description = "log de l'administrateur"
+  type        = string
+}
+
+variable "administrator_login_password" {
+  description = "Mot de passe de l'administrateur"
+  type        = string
+}
+

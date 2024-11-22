@@ -44,4 +44,6 @@ module "database" {
   sku_name             = var.postgresql_sku_name        # Définit le SKU (ex: "B_Gen5_1")
   storage_tier         = var.postgresql_storage_tier    # Définit le niveau de stockage (ex: "Standard")
   vnet_id             = module.vnet.vnet_id
+  administrator_login = var.administrator_login
+  administrator_login_password = var.administrator_login_password
 }

@@ -13,8 +13,8 @@ resource "azurerm_postgresql_server" "postgresql" {
   sku_name            = "GP_Gen5_2" # General Purpose avec 2 vCores
   storage_mb          = 5120  # 5 Go, ajustez en fonction de vos besoins
   version             = "11"
-  administrator_login = "adminuser"
-  administrator_login_password = "YourPassword123!"  # Changez ceci avec un mot de passe sécurisé
+  administrator_login = var.administrator_login
+  administrator_login_password = var.administrator_login_password
 
   ssl_enforcement_enabled = true
 
