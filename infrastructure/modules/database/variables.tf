@@ -1,41 +1,41 @@
 variable "resource_group_name" {
-  description = "The name of the resource group where the database will be created"
+  description = "Le nom du groupe de ressources où la base de données sera créée"
   type        = string
 }
 
 variable "location" {
-  description = "The location for the database"
+  description = "La région où la base de données sera déployée"
   type        = string
 }
 
 variable "vnet_subnet_id" {
-  description = "The ID of the subnet where the PostgreSQL database will be connected"
+  description = "L'ID du sous-réseau où la base de données PostgreSQL sera connectée"
   type        = string
 }
 
 variable "sku_name" {
-  description = "The SKU name for the database"
+  description = "Le nom de l'offre (SKU) pour la base de données"
   type        = string
   default     = "GP_Gen5_2"  # Utilisez une offre de base, compatible avec Azure for Students
 }
 
 variable "storage_tier" {
-  description = "The storage tier for the database"
+  description = "Le niveau de stockage pour la base de données"
   type        = string
   default     = "Standard"  # Assurez-vous que c'est compatible avec votre abonnement
 }
 
 variable "vnet_id" {
-  description = "ID du réseau virtuel auquel lier la zone DNS privée"
+  description = "L'ID du réseau virtuel auquel lier la zone DNS privée"
   type        = string
 }
 
 variable "administrator_login" {
-  description = "log de l'administrateur"
+  description = "Le login de l'administrateur"
   type        = string
 }
 
 variable "administrator_login_password" {
-  description = "Mot de passe de l'administrateur"
+  description = "Le mot de passe de l'administrateur"
   type        = string
 }

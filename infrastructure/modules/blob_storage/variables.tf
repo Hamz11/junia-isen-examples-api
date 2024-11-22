@@ -1,15 +1,14 @@
 variable "resource_group_name" {
-  description = "The name of the resource group in which the database will be created."
+  description = "Le nom du groupe de ressources dans lequel la base de données sera créée."
   type        = string
 }
 
 variable "location" {
-  description = "The location for the storage account"
+  description = "La région où le compte de stockage sera déployé."
   type        = string
 }
 
 variable "vnet_subnet_id" {
-  description = "The ID of the subnet where the Blob Storage will be connected"
+  description = "L'ID du sous-réseau où le stockage Blob sera connecté."
   type        = string
 }
-

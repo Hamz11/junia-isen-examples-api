@@ -1,16 +1,14 @@
 output "postgresql_server_id" {
-  description = "The ID of the PostgreSQL Server"
+  description = "L'ID du serveur PostgreSQL"
   value       = azurerm_postgresql_server.postgresql.id
 }
 
 output "postgresql_server_fqdn" {
-  description = "The Fully Qualified Domain Name of the PostgreSQL Server"
+  description = "Le nom de domaine complet (FQDN) du serveur PostgreSQL"
   value       = azurerm_postgresql_server.postgresql.fqdn
 }
 
 output "postgresql_private_endpoint_id" {
-  description = "The ID of the PostgreSQL Private Endpoint"
+  description = "L'ID du point de terminaison privé pour PostgreSQL"
   value       = azurerm_private_endpoint.postgresql_private_endpoint.id
 }
-
-
