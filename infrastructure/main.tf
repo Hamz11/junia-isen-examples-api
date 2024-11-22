@@ -34,3 +34,16 @@ module "vnet" {
    location               = var.location
    vnet_subnet_id         = module.vnet.blob_storage_subnet_id  # Utilisation de la sortie pour le subnet Blob Storage
  }
+
+
+module "database" {
+  source               = "./modules/database"
+  resource_group_name  = var.resource_group_name
+  location             = var.location
+  vnet_subnet_id       = module.vnet.database_subnet_id  # L'ID du sous-réseau pour PostgreSQL
+  sku_name             = var.postgresql_sku_name        # Définit le SKU (ex: "B_Gen5_1")
+  storage_tier         = var.postgresql_storage_tier    # Définit le niveau de stockage (ex: "Standard")
+  vnet_id             = module.vnet.vnet_id
+  administrator_login = var.administrator_login
+  administrator_login_password = var.administrator_login_password
+}
