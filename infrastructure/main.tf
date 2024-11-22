@@ -65,4 +65,7 @@ module "app_service" {
   application_insights_key = null
   postgresql_connection_string = null
   connection_string = var.postgresql_connection_string
+  vnet_subnet_id = module.vnet.app_service_subnet_id  # Passer l'ID du subnet depuis le module VNet
+
 }
+

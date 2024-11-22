@@ -34,3 +34,8 @@ variable "connection_string" {
   description = "La chaîne de connexion utilisée par l'App Service pour se connecter à la base de données PostgreSQL"
   type        = string
 }
+
+variable "vnet_subnet_id" {
+  description = "The ID of the subnet where the PostgreSQL database will be connected"
+  type        = string
+}

@@ -41,3 +41,16 @@ resource "azurerm_app_service" "app_service" {
     }
 }
 
+resource "azurerm_private_endpoint" "app_service_private_endpoint" {
+  name                = "${var.app_service_name}-private-endpoint"
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  subnet_id           = var.vnet_subnet_id  # ID du subnet de l'App Service
+
+  private_service_connection {
+    name                           = "${var.app_service_name}-private-connection"
+    is_manual_connection           = false
+    private_connection_resource_id = azurerm_app_service.app_service.id
+    subresource_names              = ["sites"]  # Sous-ressource spécifique à un App Service
+  }
+}
