@@ -14,7 +14,7 @@ variable "location" {
 variable "resource_group_name" {
   description = "Nom du groupe de ressources"
   type        = string
-  default     = "projet-cloud"  # Nom de ton groupe de ressources
+  default     = "projet-cloud3"  # Nom de ton groupe de ressources
 }
 
 # Ajouter d'autres variables globales selon les besoins de ton infrastructure

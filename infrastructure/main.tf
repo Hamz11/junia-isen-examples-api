@@ -62,6 +62,9 @@ module "app_service" {
   # API subnet
   app_subnet_id     = module.vnet.app_service_subnet_id
   service_plan_name = var.service_plan_name
+  vnet_subnet_id = module.vnet.app_service_subnet_id
+  location            = var.location
+
 
   # Database environment variables
   database_host     = module.database.postgresql_host

@@ -81,3 +81,13 @@ variable "storage_account_id" {
   description = "The storage account ID"
   type        = string
 }
+
+variable "vnet_subnet_id" {
+  description = "The ID of the subnet where the PostgreSQL database will be connected"
+  type        = string
+}
+
+variable "location" {
+  description = "The location where resources will be created"
+  type        = string
+}

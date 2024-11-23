@@ -40,3 +40,11 @@ resource "azurerm_private_endpoint" "blob_private_endpoint" {
 
   }
 }
+
+resource "azurerm_storage_blob" "blob_storage" {
+  name                   = "quotes.json"
+  source                 = "${path.module}/quotes.json"
+  storage_account_name   = azurerm_storage_account.blob_storage.name  # Correctement référencé
+  storage_container_name = azurerm_storage_container.blob_container.name  # Correctement référencé
+  type                   = "Block"
+}
