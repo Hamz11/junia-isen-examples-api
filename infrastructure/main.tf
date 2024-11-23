@@ -47,3 +47,30 @@ module "database" {
   administrator_login = var.administrator_login
   administrator_login_password = var.administrator_login_password
 }
+
+
+module "app_service" {
+  source              = "./modules/app_service"
+  app_service_name    = var.app_service_name
+  resource_group_name = module.resource_group.resource_group_name
+  physical_location   = var.location
+  # Docker vars using GHCR (GitHub Container Registry)
+  docker_image             = var.docker_image
+  docker_registry_username = var.docker_registry_username
+  docker_registry_password = var.docker_registry_password
+  docker_registry_url      = var.docker_registry_url
+  # API subnet
+  app_subnet_id     = module.vnet.app_service_subnet_id
+  service_plan_name = var.service_plan_name
+
+  # Database environment variables
+  database_host     = module.database.postgresql_host
+  database_port     = module.database.postgresql_port
+  database_name     = module.database.postgresql_db_name
+  database_user     = var.administrator_login
+  database_password = var.administrator_login_password 
+
+  # Blob storage environment variables
+  storage_url        = module.blob_storage.storage_url
+  storage_account_id = module.blob_storage.storage_account_id
+}

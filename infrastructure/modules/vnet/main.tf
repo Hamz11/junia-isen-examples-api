@@ -5,11 +5,26 @@ resource "azurerm_virtual_network" "Vnet_projet_cloud" {
   resource_group_name = var.resource_group_name
 }
 
+# resource "azurerm_subnet" "app_service_subnet" {
+#   name                 = "app-service-subnet"
+#   resource_group_name  = var.resource_group_name
+#   virtual_network_name = azurerm_virtual_network.Vnet_projet_cloud.name
+#   address_prefixes     = [var.app_service_subnet_prefix]
+# }
+
 resource "azurerm_subnet" "app_service_subnet" {
   name                 = "app-service-subnet"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.Vnet_projet_cloud.name
-  address_prefixes     = [var.app_service_subnet_prefix]
+  address_prefixes     = [var.app_service_subnet_prefix]  # Remplacez par l'adresse appropriée
+
+  delegation {
+    name = "app-service-delegation"
+    service_delegation {
+      name    = "Microsoft.Web/serverFarms"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+    }
+  }
 }
 
 resource "azurerm_subnet" "database_subnet" {
