@@ -1,46 +1,33 @@
-# Examples API
+# Projet de Cloud Computing
+## Équipe
+-Hamza Berbache  
+-Arthur Passedouet  
+-Matteo Guignet  
+-Mateo Rabier  
 
-Simple API that returns example records from a database.
+## Description du projet
+Ce projet vise à déployer une infrastructure sur Azure pour une API HTTP existante et à mettre en œuvre un pipeline CI/CD en utilisant GitHub Actions. L'infrastructure, gérée via Terraform, est automatiquement déployée grâce aux workflows CI/CD. L'API HTTP fournira plusieurs endpoints permettant d'interagir avec une base de données et un Blob Storage. 
+Nous avons donc utilisé :  
+-Azure  
+-Github  
+-Terraform  
+-FastAPI  
 
-## Prerequisites
+## Structure du projet
+Le répertoire du projet est constitué de :  
+.github : Contient la CI/CD
+exemple : Contient le code pour l'API
+infrastructure : Contient l'architecture cloud
+test : Contient les tests nécessaires pour l'API
 
-- you need to install [uv](https://docs.astral.sh/uv/guides/install-python/)
-- you must have a PostgreSQL instance available with an `example` table
+# Installation
+Pour lancer le projet, il faut réaliser les étapes suivantes :
+-Dupliquer le projet via github  
+-Renseigner "terraform.tfvars" avec les informations nécessaires en suivant les commentaires sur github : subscription_id ; docker_registry_username ; docker_registry_password et renseigner un nom dans app_service_name  
+-Initialliser terraform avec les commandes suivantes : terraform init ; terraform plan -out=tfplan ; terraform apply "tfplan"  
+-Recuperer l'URL dans l'output puis aller sur le site via un navigateur de votre choix.
 
-## Installation
+# Remerciements
+Nous voudrions remercier le groupe de Arthur LAFONT et Louis SKRZYPCZAK pour nous avoir aider avec le code nécessaire pour faire marcher notre CI/CD et nous avoir aider pour certains points lors du developpement de notre code.
 
-```shell
-# Install Python in the right version
-uv python install
 
-# Install dependencies and create virtual env
-uv sync
-```
-
-## Run
-
-```shell
-# Export environment variables to connect to the PostgreSQL database...
-export DATABASE_HOST=
-export DATABASE_PORT=
-export DATABASE_NAME=
-export DATABASE_USER=
-export DATABASE_PASSWORD='' # Use single quotes to avoid shell interpolation with characters like $ or #
-# ...and the storage account
-export STORAGE_ACCOUNT_URL=
-
-# Run the application
-uv run fastapi dev examples/examples.py
-```
-
-## Run tests
-
-```
-uv run pytest tests/
-```
-
-They go on:
-
-- http://localhost:8000/docs
-- http://localhost:8000/
-- http://localhost:8000/examples
