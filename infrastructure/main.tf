@@ -24,6 +24,8 @@ module "vnet" {
   app_service_subnet_prefix = var.app_service_subnet_prefix
   database_subnet_prefix    = var.database_subnet_prefix
   blob_storage_subnet_prefix = var.blob_storage_subnet_prefix
+
+  depends_on = [module.resource_group]
 }
 
 # A décommenter pour ajouter le blob storage au subnet 
@@ -33,6 +35,8 @@ module "vnet" {
    resource_group_name    = var.resource_group_name
    location               = var.location
    vnet_subnet_id         = module.vnet.blob_storage_subnet_id  # Utilisation de la sortie pour le subnet Blob Storage
+
+   depends_on = [module.resource_group]
  }
 
 
@@ -46,6 +50,8 @@ module "database" {
   vnet_id             = module.vnet.vnet_id
   administrator_login = var.administrator_login
   administrator_login_password = var.administrator_login_password
+
+  depends_on = [module.resource_group]
 }
 
 
@@ -76,4 +82,6 @@ module "app_service" {
   # Blob storage environment variables
   storage_url        = module.blob_storage.storage_url
   storage_account_id = module.blob_storage.storage_account_id
+
+  depends_on = [module.resource_group]
 }

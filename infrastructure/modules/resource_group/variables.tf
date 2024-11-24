@@ -7,5 +7,5 @@ variable "location" {
 variable "resource_group_name" {
   description = "Nom du groupe de ressources"
   type        = string
-  default     = "projet-cloud3"  # Nom par défaut du groupe de ressources
+  default     = "projet-cloud"  # Nom par défaut du groupe de ressources
 }
