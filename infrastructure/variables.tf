@@ -14,7 +14,7 @@ variable "location" {
 variable "resource_group_name" {
   description = "Nom du groupe de ressources"
   type        = string
-  default     = "projet-cloud"  # Nom de ton groupe de ressources
+  default     = "projet-cloud3"  # Nom de ton groupe de ressources
 }
 
 # Ajouter d'autres variables globales selon les besoins de ton infrastructure
@@ -74,5 +74,42 @@ variable "administrator_login" {
 variable "administrator_login_password" {
   description = "Mot de passe de l'administrateur"
   type        = string
+}
+
+
+variable "service_plan_name" {
+  description = "Name of service plan"
+  type        = string
+  default     = "my_service_plan"
+}
+
+variable "docker_registry_password" {
+  description = "Docker password"
+  type        = string
+}
+
+variable "docker_image" {
+  description = "Image"
+  type        = string
+  default     = "ghcr.io/lskrzypc/cloud_computing_24:latest"
+}
+
+variable "docker_registry_username" {
+  description = "Docker username"
+  type        = string
+  default     = "Lskrzypc"
+}
+
+variable "docker_registry_url" {
+  description = "Docker url"
+  type        = string
+  default     = "https://ghcr.io"
+}
+
+variable "app_service_name" {
+  description = "App service name"
+  type        = string
+  default     = "cloudcomputing2024api"
+
 }
 

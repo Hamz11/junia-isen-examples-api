@@ -13,13 +13,13 @@ resource "azurerm_storage_account" "blob_storage" {
 }
 
 resource "azurerm_storage_container" "blob_container" {
-  name                  = random_string.my_random_storage_name.result
+  name                  = "api"
   storage_account_id    = azurerm_storage_account.blob_storage.id
   container_access_type = "private"
 }
 
 resource "azurerm_storage_blob" "example_blob" {
-  name                   = "{random_string.my_random_storage_name.result}.zip"
+  name                   = "api.zip"
   storage_account_name   = azurerm_storage_account.blob_storage.name
   storage_container_name = azurerm_storage_container.blob_container.name
   type                   = "Block"
@@ -39,4 +39,12 @@ resource "azurerm_private_endpoint" "blob_private_endpoint" {
     is_manual_connection          = false  # Connexion gérée automatiquement
 
   }
+}
+
+resource "azurerm_storage_blob" "blob_storage" {
+  name                   = "quotes.json"
+  source                 = "${path.module}/quotes.json"
+  storage_account_name   = azurerm_storage_account.blob_storage.name  # Correctement référencé
+  storage_container_name = azurerm_storage_container.blob_container.name  # Correctement référencé
+  type                   = "Block"
 }
