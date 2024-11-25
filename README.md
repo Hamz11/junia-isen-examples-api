@@ -31,7 +31,9 @@ Pour lancer le projet, il faut réaliser les étapes suivantes :
 Nous voudrions remercier le groupe de Arthur LAFONT et Louis SKRZYPCZAK pour nous avoir aider avec le code nécessaire pour faire marcher notre CI/CD et nous avoir aider pour certains points lors du developpement de notre code.
 
 # Problemes à résoudre
-La route /examples amène à une erreur "Internal Server Error" que nous n'avons pas réussi à résoudre.
+-La route /examples amène à une erreur "Internal Server Error" que nous n'avons pas réussi à résoudre.
 Une de nos piste serait l'erreur provienn du fait que la database soit vide et que donc l'api n'ait rien à retourner.
 Pour essayer de pallier à ce soucis nous avons tout de meme essayer d'ajouter une route /data qui créerait une table à afficher mais cela ne semble pas fonctionner.
+
+-Un autre problème peut survenir sur la route /examples, il y a une erreur qui dit que le connexion est refusée. Pour passer outre il suffit de modifier le pare-feu de la datbase sur Azure. Aussi absurde que cela puisse paraitre, modifier le pare-feu puis le remettre comme configurer dans le code terraform fonctionne.
 
