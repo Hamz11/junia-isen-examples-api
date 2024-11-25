@@ -18,8 +18,8 @@ resource "azurerm_postgresql_server" "postgresql" {
   administrator_login = var.administrator_login                    # Nom d'utilisateur administrateur
   administrator_login_password = var.administrator_login_password  # Mot de passe administrateur
 
-  ssl_enforcement_enabled = true                                   # Enforce SSL pour les connexions
-
+  ssl_enforcement_enabled = false 
+  ssl_minimal_tls_version_enforced = "TLSEnforcementDisabled"                          
   tags = {
     environment = "production"                                     # Tag pour identifier l'environnement
   }
@@ -68,4 +68,12 @@ resource "azurerm_private_endpoint" "postgresql_private_endpoint" {
     name                = "dns"                                # Nom du groupe DNS privé
     private_dns_zone_ids = [azurerm_private_dns_zone.postgresql_dns_zone.id] # ID de la zone DNS privée
   }
+}
+
+resource "azurerm_postgresql_firewall_rule" "example" {
+  name                = "Allowwebapp"
+  resource_group_name = var.resource_group_name
+  server_name         = azurerm_postgresql_server.postgresql.name
+  start_ip_address = "10.0.1.0"
+  end_ip_address = "10.255.255.255"
 }

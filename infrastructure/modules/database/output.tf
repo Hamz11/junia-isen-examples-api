@@ -13,9 +13,9 @@ output "postgresql_private_endpoint_id" {
   value       = azurerm_private_endpoint.postgresql_private_endpoint.id
 }
 
-output "postgresql_db_name" {
+output "name" {
   description = "Nom de la base de données PostgreSQL"
-  value       = azurerm_postgresql_database.example_db.name
+  value       = azurerm_postgresql_server.postgresql.name
 }
 
 output "postgresql_port" {
@@ -27,3 +27,9 @@ output "postgresql_host" {
   description = "Nom d'hôte du serveur PostgreSQL"
   value       = azurerm_postgresql_server.postgresql.fqdn
 }
+
+output "database_user" {
+  description = "Nom d'hôte du serveur PostgreSQL"
+  value       = azurerm_postgresql_server.postgresql.name
+}
+
