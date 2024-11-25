@@ -27,3 +27,9 @@ output "postgresql_host" {
   description = "Nom d'hôte du serveur PostgreSQL"
   value       = azurerm_postgresql_server.postgresql.fqdn
 }
+
+output "database_user" {
+  description = "Nom d'hôte du serveur PostgreSQL"
+  value       = azurerm_postgresql_server.postgresql.name
+}
+

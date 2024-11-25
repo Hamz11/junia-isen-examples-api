@@ -80,7 +80,7 @@ module "app_service" {
   database_host     = module.database.postgresql_host
   database_port     = module.database.postgresql_port
   database_name     = "mydatabase"
-  database_user     = "adminuser@pgserver-rbgd4g7wvc"
+  database_user     = "adminuser@${module.database.database_user}"
   database_password = var.administrator_login_password 
 
   # Blob storage environment variables

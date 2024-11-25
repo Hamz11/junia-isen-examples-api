@@ -64,7 +64,6 @@ variable "database_name" {
 variable "database_user" {
   description = "The database user"
   type        = string
-  default = "adminuser@pgserver-rbgd4g7wvc"
 }
 
 variable "database_password" {
