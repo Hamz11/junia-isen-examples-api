@@ -41,3 +41,7 @@ output "blob_container_name" {
 output "blob_name" {
   value = module.blob_storage.blob_name
 }
+
+output "database_user" {
+  value = "${var.administrator_login}@${module.database.name}"
+}

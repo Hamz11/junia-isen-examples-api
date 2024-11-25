@@ -14,7 +14,7 @@ variable "location" {
 variable "resource_group_name" {
   description = "Nom du groupe de ressources"
   type        = string
-  default     = "projet-cloud"  # Nom de ton groupe de ressources
+  default     = "projet-cloud3"  # Nom de ton groupe de ressources
 }
 
 # Ajouter d'autres variables globales selon les besoins de ton infrastructure
@@ -91,13 +91,12 @@ variable "docker_registry_password" {
 variable "docker_image" {
   description = "Image"
   type        = string
-  default     = "ghcr.io/lskrzypc/cloud_computing_24:latest"
+  default     = "ghcr.io/hamz11/junia-isen-examples-api:latest"
 }
 
 variable "docker_registry_username" {
   description = "Docker username"
   type        = string
-  default     = "Lskrzypc"
 }
 
 variable "docker_registry_url" {
@@ -112,4 +111,3 @@ variable "app_service_name" {
   default     = "cloudcomputing2024api"
 
 }
-
