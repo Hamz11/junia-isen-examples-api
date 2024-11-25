@@ -69,3 +69,11 @@ resource "azurerm_private_endpoint" "postgresql_private_endpoint" {
     private_dns_zone_ids = [azurerm_private_dns_zone.postgresql_dns_zone.id] # ID de la zone DNS privée
   }
 }
+
+resource "azurerm_postgresql_firewall_rule" "example" {
+  name                = "Allowwebapp"
+  resource_group_name = var.resource_group_name
+  server_name         = azurerm_postgresql_server.postgresql.name
+  start_ip_address = "10.0.1.0"
+  end_ip_address = "10.0.1.255"
+}
