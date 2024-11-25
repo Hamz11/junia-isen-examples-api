@@ -1,19 +1,21 @@
+# Configuration du provider Azure (azurerm)
 provider "azurerm" {
   features {}
 
-  # Paramètres d'authentification
+
   subscription_id = var.subscription_id
 }
 
 
-# Appel du module resource_group
+
+# Appel du module resource_group pour créer un groupe de ressources
 module "resource_group" {
   source              = "./modules/resource_group"  # Chemin du module créé
   resource_group_name = var.resource_group_name    # Nom du groupe de ressources
   location            = var.location                # Région où le groupe de ressources sera créé
 }
 
-# Appel du module vnet
+# Appel du module vnet pour créer un réseau virtuel et ses sous-réseaux
 
 module "vnet" {
   source              = "./modules/vnet"
@@ -28,7 +30,7 @@ module "vnet" {
   depends_on = [module.resource_group]
 }
 
-# A décommenter pour ajouter le blob storage au subnet 
+# Appel du module blob_storage pour créer un compte de stockage et un conteneur
 
  module "blob_storage" {
    source                 = "./modules/blob_storage"
@@ -39,6 +41,7 @@ module "vnet" {
    depends_on = [module.resource_group]
  }
 
+# Appel du module database pour créer une base de données PostgreSQL dans le VNet
 
 module "database" {
   source               = "./modules/database"
@@ -54,6 +57,7 @@ module "database" {
   depends_on = [module.resource_group]
 }
 
+# Appel du module app_service pour déployer une application Web dans Azure
 
 module "app_service" {
   source              = "./modules/app_service"
