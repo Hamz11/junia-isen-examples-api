@@ -18,8 +18,8 @@ resource "azurerm_postgresql_server" "postgresql" {
   administrator_login = var.administrator_login                    # Nom d'utilisateur administrateur
   administrator_login_password = var.administrator_login_password  # Mot de passe administrateur
 
-  ssl_enforcement_enabled = true                                   # Enforce SSL pour les connexions
-
+  ssl_enforcement_enabled = false 
+  ssl_minimal_tls_version_enforced = "TLSEnforcementDisabled"                          
   tags = {
     environment = "production"                                     # Tag pour identifier l'environnement
   }
