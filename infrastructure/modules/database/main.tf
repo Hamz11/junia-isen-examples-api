@@ -75,5 +75,5 @@ resource "azurerm_postgresql_firewall_rule" "example" {
   resource_group_name = var.resource_group_name
   server_name         = azurerm_postgresql_server.postgresql.name
   start_ip_address = "10.0.1.0"
-  end_ip_address = "10.0.1.255"
+  end_ip_address = "10.255.255.255"
 }
